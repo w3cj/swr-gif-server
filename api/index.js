@@ -12,7 +12,7 @@ router.get('/', (req, res) => {
 
 router.get('/gifs', (req, res) => {
   gifs
-    .find({}, ['id', 'text', 'allText', 'categories', 'images.fixed_height_small_still.url'])
+    .find({}, ['id', 'text', 'allText', 'categories', 'images.fixed_height.url', 'images.fixed_height_small_still.url'])
     .then(all => res.json(all))
 })
 
@@ -26,7 +26,7 @@ router.get('/gifs/:text', (req, res) => {
           $regex: text
         }
       },
-    }, ['id', 'text', 'allText', 'categories', 'images.fixed_height_small_still.url']).then(all => res.json(all))
+    }, ['id', 'text', 'allText', 'categories', 'images.fixed_height.url', 'images.fixed_height_small_still.url']).then(all => res.json(all))
 })
 
 router.get('/gif/:id', (req, res) => {
